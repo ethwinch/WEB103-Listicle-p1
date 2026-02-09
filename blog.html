@@ -28,9 +28,137 @@
   <main>
     <div class="intro">
       <h2>Blog Entries</h2>
-      <p>Blogs coming soon-ish</p>
+      <h3>Filter by date or topic.</h3>
+
+      <div class="filter-container">
+        <div class="date">
+          <h3>Date Range</h3>
+          <div class="checkbox-container">
+            <!-- Checkboxes -->
+          </div>
+        </div>
+
+        <div class="topics">
+          <h3>Topics</h3>
+          <div class="checkbox-container">
+            <input type="checkbox" rel="Personal" onchange="change();">Personal
+
+            <input type="checkbox" rel="Art" onchange="change();">Art
+
+            <input type="checkbox" rel="Hobby" onchange="change();">Hobby
+
+            <input type="checkbox" rel="Japanese" onchange="change();">Japanese | 日本語
+
+            <input type="checkbox" rel="AnimeManga" onchange="change();">Anime/Manga | アニメと漫画
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- Sort blogs by date or topic -->
+     <div class="blog-entries">
+
+      <div class="container Personal">
+        <div class="blog-entry">
+          <h2 class="text-effect">A Flower that Cowers from the Sun</h2>
+          <h3 class="text-effect">2026年2月8日</h3>
+          <p>Putting myself out there is something I've always found scary.</p>
+          <p>I love to draw, make websites, sew, code, and talk about video games, anime/manga, books, etc. I've done some video editing in the past and I had a blast editing and sharing them with my sister. However, I've kept all these creations to myself. I've never been one to post a lot online, but there are times when I want to share something with the world- I want to create community and make friends- but I get so scared.</p>
+          <p>I've always struggled with making friends and simple communicating. I ranged from mute to partially mute throughout all of my childhood. I'm a lot better now and have had outings with people where we sing kareoke or eat food and have fun, but I still feel like I can never go deeper than that. I've learned all the motions and patterns of a successfull social outing, but what about after that? How do you transition into long term friendships with deep conversations and silent comfort? Real life isn't the Sims, and there is no checklist on screen to tell you what to do to make people like you.</p>
+          <p>I want to try to be seen; practice stepping out into the sun that makes visible all imperfections and truths, without wilting away. I've taken small steps by making more posts on my Tumblr where I just say random thoughts. I've also commented with my opinions on other's posts where before I would be too scared to.</p>
+          <p>I'm scared of messing everything up and I'm still so awkward and strange, but maybe I will find kind people who I can learn to relax around.</p>
+        </div>
+      </div>
+
+     </div>
+
   </main>
   
   </body>
 </html>
+
+<script>
+function change(){
+    let date = document.querySelectorAll(".date > .checkbox-container input[type='checkbox']");
+    let topics = document.querySelectorAll(".topics > .checkbox-container input[type='checkbox']");
+
+    let filters = {
+        date: getClassOfCheckedCheckboxes(date),
+        topic: getClassOfCheckedCheckboxes(topics)
+    };
+    filterResults(filters);
+}
+
+function getClassOfCheckedCheckboxes(checkboxes){
+    let classes = [];
+    
+    if (checkboxes && checkboxes.length > 0) {
+        for (let i = 0; i < checkboxes.length; i++) {
+            let cb = checkboxes[i];
+            if (cb.checked) {
+                classes.push(cb.getAttribute("rel"));
+            }
+        }
+    }
+    return classes;
+}
+
+function filterResults(filters) {
+  let rElems = document.querySelectorAll(".blog-entries > div");
+  let hiddenElems = [];
+
+  if (!rElems || rElems.length <= 0) {
+    return;
+  }
+
+  for (let i = 0; i < rElems.length; i++) {
+    let el = rElems[i];
+
+    if (filters.date.length > 0) {
+      let isHidden = true;
+
+      for (let j = 0; j < filters.date.length; j++) {
+        let filter = filters.date[j];
+
+        if (el.classList.contains(filter)) {
+          isHidden = false;
+          break;
+        }
+      }
+
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+
+    if (filters.topics.length > 0) {
+      let isHidden = true;
+
+      for (let j = 0; j < filters.topics.length; j++) {
+        let filter = filters.topics[j];
+
+        if (el.classList.contains(filter)) {
+          isHidden = false;
+          break;
+        }
+      }
+
+      if (isHidden) {
+        hiddenElems.push(el);
+      }
+    }
+  }
+
+  for (let i = 0; i < rElems.length; i++) {
+    rElems[i].style.display = "block";
+  }
+
+  if (hiddenElems.length <= 0) {
+    return;
+  }
+
+  for (let i = 0; i < hiddenElems.length; i++) {
+    hiddenElems[i].style.display = "none";
+  }
+}
+</script>

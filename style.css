@@ -1,6 +1,12 @@
-/* CSS is how you can add style to your website, such as colors, fonts, and positioning of your
-   HTML content. To learn how to do something, just try searching Google for questions like
-   "how to change link color." */
+:root{
+  --purple: #cb59ff;
+  --purple-bg: #6800ff57;
+
+  --cyan: #00ff73;
+  --green-bg: rgba(0, 111, 69, 0.16);
+
+  --dark-cyan: #1bffdfc9;
+}
 
 body {
   background-image: url("assets/endbg.jpg"); 
@@ -9,16 +15,7 @@ body {
   font-family: Verdana;
   margin: 0;
 }
-main{
-  background-color: rgba(0, 16, 24, 0.9);
-  border-radius: 24px;
-  border-style: solid;
-  border-width: 4px;
-  border-color: #00ff73;
-  
-  padding-top: 8vh;
-  padding-bottom: 8vh;
-  
+main{  
   margin-left: 16vw;
   margin-right: 16vw;
   min-width: 40vw;
@@ -34,22 +31,42 @@ h1{
 }
 h2{
   text-align: center;
-  color: #750db9;
+  color: var(--cyan);
+}
+h3{
+  text-align: center;
+  color: var(--cyan);
 }
 p{
   text-align: center;
-  color: #561283;
+  color: var(--dark-cyan);
   padding: 6px 6px;
 }
+
+.container{
+  background-color: var(--green-bg);
+  border-radius: 24px;
+  border-style: solid;
+  border-width: 4px;
+  border-color: var(--cyan);
+
+  filter: blur(0.3px);
   
-.nav{
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
+  padding-top: 8vh;
+  padding-bottom: 8vh;
+
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+}
+
+.text-effect{
+  filter: blur(0.3px);
+  filter: drop-shadow(0px 0px 2px var(--cyan));
+  text-shadow: 0px 0px 0.5px var(--cyan);
+  background-clip: text;
+}
   
-  align-items: center;
-  margin: auto;
-  
+.nav{  
   width: 100%;
   height: 8rem;
 }
@@ -57,7 +74,8 @@ p{
 .nav-links{
   list-style: none;
   display: flex;
-  margin: auto;
+  justify-content: center;
+
   margin-top: 2rem;
   padding: 0;
 }
@@ -68,19 +86,29 @@ p{
   font-size: 24px;
   font-weight: 500;
   padding: 0.8vw 1.6vw;
-  margin: 0px;
+  margin: 0.5rem;
   
-  background-color: #4630aa;
-  color: white;
+  background-color: var(--green-bg);
+  border-radius: 12px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: var(--cyan);
+
+  color: var(--cyan);
   cursor: pointer;
+  transition: transform .4s ease;
 }
 .nav-links > li > .active{
-  background-color: #33258f;
-  color: #feda84;
+  background-color: var(--purple-bg);
+  color: var(--purple);
+  border-color: var(--purple);
 }
 .nav-links > li a:hover{
-  background-color: #33258f;
-  transition: 0.4s ease;
+  filter: blur(0.3px);
+  filter: drop-shadow(0px 0px 2px var(--cyan));
+  text-shadow: 0px 0px 0.5px var(--cyan);
+
+  transform: scale(1.05);
 }
 
 
@@ -101,8 +129,20 @@ header > .hero-image{
 .intro{
   margin-left: 8vw;
   margin-right: 8vw;
+  margin-bottom: 2rem;
 }
 
 .computer-img{
   width: 800px;
+}
+
+
+/* BLOG.HTML */
+.filter-container{
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.checkbox-container{
+  display: grid;
+  grid-template-columns: auto auto auto auto;
 }
