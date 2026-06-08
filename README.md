@@ -1,4 +1,4 @@
-# WEB103 Project 1 - Queer NYC Hot Spot - Part I
+# WEB103 Project 1 - Queer NYC Hot Spots - Part I
 
 Submitted by: Ethan Winch
 
