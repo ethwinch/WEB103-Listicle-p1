@@ -30,14 +30,14 @@ const renderLocations = async () => {
             bottomContainer.appendChild(locationType)
 
             const locationMasks = document.createElement('p')
-            locationMasks.textContent = location.masks
+            locationMasks.textContent = 'Masks: ' + location.masks
             bottomContainer.appendChild(locationMasks)
 
 
             const readMore = document.createElement('a')
             readMore.textContent = 'Read More >'
             readMore.setAttribute('role', 'button')
-            readMore.href = `/location/${location.id}`
+            readMore.href = `/locations/${location.id}`
             bottomContainer.appendChild(readMore)
 
             card.appendChild(topContainer)
@@ -52,4 +52,10 @@ const renderLocations = async () => {
     }
 }
 
-renderLocations()
+const requestedURL = window.location.href.split('/').pop()
+if (requestedURL) {
+    window.location.href = '../404.html'
+} else {
+    renderLocations()
+}
+

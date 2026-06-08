@@ -6,13 +6,13 @@ headerContainer.className = 'header-container'
 const headerLeft = document.createElement('div')
 headerLeft.className = 'header-left'
 
-// const headerLogo = document.createElement('img')
-// headerLogo.src = '/logo.png'
+const headerLogo = document.createElement('img')
+headerLogo.src = '/assets/logo.png'
 
 const headerTitle = document.createElement('h1')
 headerTitle.textContent = 'Queer Hot Spots in NYC'
 
-// headerLeft.appendChild(headerLogo)
+headerLeft.appendChild(headerLogo)
 headerLeft.appendChild(headerTitle)
 
 const headerRight = document.createElement('div')
