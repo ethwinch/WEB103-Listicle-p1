@@ -1,12 +1,12 @@
 import express from 'express'
-import locationRouter from './routes/locations.js'
+import locationsRouter from './routes/locations.js'
 
 const app = express()
 
 // initialize middleware
 app.use('/public', express.static('./public'))
 app.use('/scripts', express.static('./public/scripts'))
-app.use('/location', locationRouter)
+app.use('/locations', locationsRouter)
 
 
 // Define a route for the root URL
@@ -23,7 +23,3 @@ app.listen(PORT, () => {
 })
 
 
-
-// Queer Hot Spots in NYC
-// The Center, BGSQD, Hivemindbooks, Bluestockings, Stonewall, NYC Resistor, From Here To Sunday, The Nonbinarian Bookstore, 
-// Shared Attributes: Place/Venue Name, Borough, Neighborhood, if Store/if 3rd-Space, Masks Required?
